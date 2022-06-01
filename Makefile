@@ -17,17 +17,7 @@ all: build
 
 .PHONY: update-constants
 update-constants: update-constants.py $(INCLUDE_DIR)/systemd/sd-messages.h
-	$(PYTHON) $+ systemd/id128-defines.h | \
-	  sort -u | \
-	  tee systemd/id128-defines.h.tmp | \
-	  $(SED) -n -r 's/,//g; s/#define (SD_MESSAGE_[A-Z0-9_]+)\s.*/add_id(m, "\1", \1) JOINER/p' | \
-	  sort -u >systemd/id128-constants.h.tmp
-	mv systemd/id128-defines.h{.tmp,}
-	mv systemd/id128-constants.h{.tmp,}
-	($(SED) 9q <docs/id128.rst && \
-	  sed -n -r 's/#define (SD_MESSAGE_[A-Z0-9_]+) .*/   .. autoattribute:: systemd.id128.\1/p' \
-	  systemd/id128-defines.h) >docs/id128.rst.tmp
-	mv docs/id128.rst{.tmp,}
+	$(PYTHON) $+ systemd/id128-defines.h
 
 build:
 	$(PYTHON) setup.py build_ext $(INCLUDE_FLAGS)
