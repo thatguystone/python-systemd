@@ -81,6 +81,8 @@ DEFAULT_CONVERTERS = {
     '_PID': int,
     '_SOURCE_MONOTONIC_TIMESTAMP': _convert_source_monotonic,
     '_SOURCE_REALTIME_TIMESTAMP': _convert_timestamp,
+    '_STREAM_ID': _convert_uuid,
+    '_SYSTEMD_INVOCATION_ID': _convert_uuid,
     '_SYSTEMD_OWNER_UID': int,
     '_SYSTEMD_SESSION': int,
     '_UID': int,
@@ -95,6 +97,7 @@ DEFAULT_CONVERTERS = {
     'ERRNO': int,
     'EXIT_STATUS': int,
     'INITRD_USEC': int,
+    'INVOCATION_ID': _convert_uuid,
     'KERNEL_USEC': int,
     'LEADER': int,
     'MESSAGE_ID': _convert_uuid,
@@ -102,6 +105,8 @@ DEFAULT_CONVERTERS = {
     'SESSION_ID': int,
     'SYSLOG_FACILITY': int,
     'SYSLOG_PID': int,
+    'TID': int,
+    'USER_INVOCATION_ID': _convert_uuid,
     'USERSPACE_USEC': int,
 }
 

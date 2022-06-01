@@ -76,13 +76,32 @@ class _Entry(TypedDict, total=False):
     _AUDIT_SESSION: int
     _BOOT_ID: UUID
     _GID: int
+    _HOSTNAME: str
+    _KERNEL_DEVICE: str
+    _KERNEL_SUBSYSTEM: str
+    _LINE_BREAK: str
     _MACHINE_ID: UUID
+    _NAMESPACE: str
     _PID: int
+    _SELINUX_CONTEXT: str
     _SOURCE_MONOTONIC_TIMESTAMP: timedelta
     _SOURCE_REALTIME_TIMESTAMP: datetime
+    _STREAM_ID: UUID
+    _SYSTEMD_CGROUP: str
+    _SYSTEMD_INVOCATION_ID: UUID
     _SYSTEMD_OWNER_UID: int
     _SYSTEMD_SESSION: int
+    _SYSTEMD_SLICE: str
+    _SYSTEMD_UNIT: str
+    _SYSTEMD_USER_SLICE: str
+    _SYSTEMD_USER_UNIT: str
+    _TRANSPORT: str
+    _UDEV_DEVLINK: str
+    _UDEV_DEVNODE: str
+    _UDEV_SYSNAME: str
     _UID: int
+    CODE_FILE: str
+    CODE_FUNC: str
     CODE_LINE: int
     COREDUMP_GID: int
     COREDUMP_PID: int
@@ -90,10 +109,14 @@ class _Entry(TypedDict, total=False):
     COREDUMP_SIGNAL: int
     COREDUMP_TIMESTAMP: datetime
     COREDUMP_UID: int
+    COREDUMP_UNIT: str
+    COREDUMP_USER_UNIT: str
     COREDUMP: bytes
+    DOCUMENTATION: str
     ERRNO: int
     EXIT_STATUS: int
     INITRD_USEC: int
+    INVOCATION_ID: UUID
     KERNEL_USEC: int
     LEADER: int
     MESSAGE_ID: UUID
@@ -101,7 +124,12 @@ class _Entry(TypedDict, total=False):
     PRIORITY: LogLevel
     SESSION_ID: int
     SYSLOG_FACILITY: int
+    SYSLOG_IDENTIFIER: str
     SYSLOG_PID: int
+    SYSLOG_RAW: str
+    SYSLOG_TIMESTAMP: str
+    TID: int
+    USER_INVOCATION_ID: UUID
     USERSPACE_USEC: int
 
 class Entry(_Entry):
