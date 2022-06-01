@@ -19,16 +19,27 @@ def _convert_fileobj(fileobj):
     except AttributeError:
         return fileobj
 
+def _convert_listening(listening):
+    if listening is None:
+        return -1
+    if listening is True:
+        return 1
+    if listening is False:
+        return 0
+    return listening
+
 def is_fifo(fileobj, path=None):
     fd = _convert_fileobj(fileobj)
     return _is_fifo(fd, path)
 
 def is_socket(fileobj, family=_AF_UNSPEC, type=0, listening=-1):
     fd = _convert_fileobj(fileobj)
+    listening = _convert_listening(listening)
     return _is_socket(fd, family, type, listening)
 
 def is_socket_inet(fileobj, family=_AF_UNSPEC, type=0, listening=-1, port=0):
     fd = _convert_fileobj(fileobj)
+    listening = _convert_listening(listening)
     return _is_socket_inet(fd, family, type, listening, port)
 
 def is_socket_sockaddr(fileobj, address, type=0, flowinfo=0, listening=-1):
@@ -43,10 +54,12 @@ def is_socket_sockaddr(fileobj, address, type=0, flowinfo=0, listening=-1):
     Constants for `family` are defined in the socket module.
     """
     fd = _convert_fileobj(fileobj)
+    listening = _convert_listening(listening)
     return _is_socket_sockaddr(fd, address, type, flowinfo, listening)
 
 def is_socket_unix(fileobj, type=0, listening=-1, path=None):
     fd = _convert_fileobj(fileobj)
+    listening = _convert_listening(listening)
     return _is_socket_unix(fd, type, listening, path)
 
 def is_mq(fileobj, path=None):

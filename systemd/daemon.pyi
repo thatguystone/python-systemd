@@ -4,7 +4,10 @@ from typing import Final, Literal, Sequence, TypeAlias
 from _typeshed import FileDescriptorLike
 
 SocketType: TypeAlias = SocketKind | Literal[0]
-Listening: TypeAlias =  Literal[-1] | Literal[0]| Literal[1]
+
+_RawListening: TypeAlias = Literal[-1] | Literal[0] | Literal[1]
+_PyListening: TypeAlias = bool | None
+Listening: TypeAlias = _PyListening | _RawListening
 
 __version__: Final[str]
 LISTEN_FDS_START: Final[int]
